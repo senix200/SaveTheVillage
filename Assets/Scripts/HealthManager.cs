@@ -47,19 +47,19 @@ public class HealthManager : MonoBehaviour
             flashCounter -= Time.deltaTime;
             if (flashCounter > flashLength * 0.66f)
             {
-                ToggleColor(false);
+                //ToggleColor(false);
             }
             else if (flashCounter > flashLength * 0.33f)
             {
-                ToggleColor(true);
+                //ToggleColor(true);
             }
             else if (flashCounter > 0)
             {
-                ToggleColor(false);
+                //ToggleColor(false);
             }
             else
             {
-                ToggleColor(true);
+                //ToggleColor(true);
                 flashActive = false;
             }
 

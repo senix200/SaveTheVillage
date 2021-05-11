@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-
     public float speed = 1;
     private Rigidbody2D _rigidbody;
     private bool walking = false;
@@ -63,7 +62,7 @@ public class EnemyController : MonoBehaviour
 
         if (walking)
         {
-           
+            Debug.Log("esta hablando");
             timeToMakeStepCounter -= Time.deltaTime;
             _rigidbody.velocity = directionToMove * speed;
             if (timeToMakeStepCounter < 0)

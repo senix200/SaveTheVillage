@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public bool isTalking;
     public float speed = 5.0f;
     private const string AXIS_H = "Horizontal", AXIS_V = "Vertical", LASTAXIS_H = "LastH", LASTAXIS_V = "LastV";    
     private Animator _animator;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         PlayerCreated();
+        isTalking = false;
     }
     private IEnumerator AttackCo()
     {
@@ -87,6 +89,12 @@ public class PlayerController : MonoBehaviour
 
     public void Movement()
     {
+        if (isTalking)
+        {
+            _rigidbody.velocity = UnityEngine.Vector2.zero;
+            return;
+        }
+
         walking = false;
 
         if (attacking)
@@ -97,7 +105,7 @@ public class PlayerController : MonoBehaviour
                 attacking = false;
                 _animator.SetBool("Attacking", false);
             }
-        }else if (Input.GetMouseButtonDown(0))
+        }else if (Input.GetButtonDown("Attack"))
         {
             attacking = true;
             attackTimeCounter = attackTime;
